@@ -1,0 +1,75 @@
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+appnamespace = "Application_"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/modules/default/controllers"
+resources.frontController.params.displayExceptions = 0
+resources.frontController.moduleDirectory = APPLICATION_PATH "/modules"
+resources.frontController.params.disableOutputBuffering = true
+
+;locale settings
+resources.locale.default = "bg"
+resources.locale.force = true
+
+;Register some plugins
+resources.frontController.plugins[] = "Application_Plugin_Auth"
+resources.frontController.plugins[] = "Application_Plugin_Acl"
+resources.frontController.plugins[] = "Application_Plugin_LayoutLoader"
+resources.frontController.plugins[] = "Application_Plugin_Helpers"
+resources.frontController.plugins[] = "Application_Plugin_View"
+resources.frontController.plugins[] = "Application_Plugin_ErrorHandler"
+resources.frontController.plugins[] = "Application_Plugin_Language"
+resources.frontController.plugins[] = "Application_Plugin_Navigation"
+tulipa.resources.frontController.plugins[] = "Tulipa_Plugin_View"
+tulipa.resources.frontController.plugins[] = "Tulipa_Plugin_AuthCheck"
+
+resources.modules[] = 
+resources.view[] =
+
+;Add autoloader namespaces
+autoloaderNamespaces[] = "Application_"
+autoloaderNamespaces[] = "Default_"
+autoloaderNamespaces[] = "Tulipa_"
+
+;database settings
+resources.db.adapter = "Pdo_Mysql"
+resources.db.params.host = "localhost"
+resources.db.params.username = "math"
+resources.db.params.password = "math"
+resources.db.params.dbname = "math"
+resources.db.params.charset = "utf8"
+
+;layout settings
+resources.layout.layout = default
+resources.layout.layoutPath = APPLICATION_PATH "/modules/default/layouts/scripts"
+resources.frontController.plugins.layoutLoader = Application_Plugin_LayoutLoader
+
+tulipa.resources.layout.layout = default
+tulipa.resources.layout.layoutPath = APPLICATION_PATH "/modules/tulipa/layouts/scripts"
+
+photos.resources.layout.layout = default
+photos.resources.layout.layoutPath = APPLICATION_PATH "/modules/default/layouts/scripts"
+
+
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.frontController.params.displayExceptions = 1
+
+[development : production]
+
+resources.db.adapter = "Pdo_Mysql"
+resources.db.params.host = "localhost"
+resources.db.params.username = "root"
+resources.db.params.password = ""
+resources.db.params.dbname = "math"
+resources.db.params.charset = "utf8"
+
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+resources.frontController.params.displayExceptions = 1

@@ -1,0 +1,61 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage Users
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: scripts.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#countryId').change(function() {
+            var targetElement = $('#cityId').parent();
+            targetElement.html('<?php
+                echo $this->translate('loading...');
+            ?>');
+            $.post('<?php
+                /** Get the module name **/
+                $moduleName = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+                $controllerName = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+                $countryIdGetScript = '\' + $(\'#countryId\').val() + \'';
+                echo $this->url(array('module' => $moduleName, 'controller' => $controllerName, 'action' => 'get-cities', 'country' => $countryIdGetScript),
+                                 'default', true, false);
+            ?>', function(response) {
+                targetElement.html(response);
+            });
+        });
+        
+        $('#dateOfBirth').datepicker({
+            changeMonth: true,
+        	changeYear: true,
+            yearRange: '1970:1998',
+            altFormat: 'yy-mm-dd',
+            dateFormat: 'yy-mm-dd',
+            showAnim: 'fadeIn'
+        });
+    });
+</script>

@@ -1,0 +1,107 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_Layout
+ * @subpackage Scripts
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: header.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+<div class="header">
+    
+    <div class="content">
+    
+        <div class="logo">
+            <a href="<?=$this->url(array('action' => 'index'), 'default')?>"><img src="<?=$this->baseUrl('resources/tulipa/images/logo.png')?>" class="logo" alt="" /></a>
+            <br />
+            <p>Tulipa</p>
+        </div>
+        
+        <p class="title"><?=$this->title?> - <?=$this->translate('Administration')?></p>
+        
+        <div class="bar ui-corner-bottom">
+            <img src="<?=$this->baseUrl('resources/tulipa/icons/24x24/next.png')?>" alt="" />
+            <a href="<?php
+                echo $this->url(array('controller' => 'logout'), 'tulipa', true);
+            ?>" class="noJs"><?=$this->translate('Logout')?></a>
+        </div>
+        
+        <div class="bar ui-corner-bottom">
+            <img src="<?=$this->baseUrl('resources/tulipa/icons/24x24/user.png')?>" alt="" />
+            <a href="<?php
+                echo $this->url(array('module' => 'tulipa', 'controller' => 'users', 'action' => 'edit', 'id' => $this->identity->id));
+            ?>"><?php
+                echo $this->identity->username;
+            ?></a>
+        </div>
+        
+        <div class="bar ui-corner-bottom">
+            <?php
+                /**
+                 * Display the language select menu.
+                 */
+                $avaliableLanguages = Zend_Registry::get('LANGUAGES');
+                $sessionLang = Application_Model_Language::getSessionLang()->name; 
+                
+                foreach ($avaliableLanguages as $language) {
+                    if ($sessionLang !== $language['name']) {
+                        $language['url'] = $this->url(array(
+                                               'controller' => 'langs',
+                                               'action' => 'change',
+                                               'lang' => $language['name']
+                                           ), 'tulipa', true);
+                    ?>
+                    <a class="ui-helper-reset ui-corner-all ui-widget languageIcon noJs"
+                       <?php
+                        /**
+                         * onclick="mainController.changeLanguage('<?=$language['url']?>');return false"
+                         */
+                       ?>
+                       href="<?php
+                            echo $language['url'];
+                       ?>">
+                        <img class="ui-helper-reset" 
+                             src="<?=$this->baseUrl('resources/common/icons/langs/' . $language['icon'])?>" 
+                             alt="<?=$language['title']?>"
+                             title="<?=$language['title']?>" />
+                    </a>
+                    <?php
+                    } else {
+                    ?>
+                    <a class="ui-helper-reset ui-state-active ui-corner-all ui-widget languageIcon active noJs">
+                        <img class="ui-helper-reset" 
+                             src="<?=$this->baseUrl('resources/common/icons/langs/' . $language['icon'])?>"
+                             alt="<?=$language['title']?>"
+                             title="<?=$language['title']?>" />
+                    </a>
+                    <?php
+                    }
+                }
+            ?>
+        </div>
+    
+    </div>
+    
+</div>

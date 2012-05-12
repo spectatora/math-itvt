@@ -1,0 +1,59 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage CRUD
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: navigation.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+
+<div class="crud-module-navigation">
+	<a href="<?php echo $this->url(array('action' => 'index', 'id' => null), 'crud'); ?>"
+	   class="iconButton folder-open">
+		<?php echo $this->translate('Browse'); ?>
+	</a>
+	<a href="<?php echo $this->url(array('action' => 'add', 'id' => null), 'crud'); ?>"
+	   class="iconButton circle-plus">
+		<?php echo $this->translate('Add'); ?>
+	</a>
+	<?php 
+	    $currentAction = Zend_Controller_Front::getInstance()->getRequest()->getActionName();
+	?>
+	<?php if (isset($this->crudConfig->files) && $currentAction == 'edit') : ?>
+	<a href="<?php echo $this->url(array('action' => 'files'), 'crud'); ?>"
+	   class="iconButton folder-collapsed">
+		<?php echo $this->translate('Files'); ?>
+	</a>
+	<?php endif; ?>
+	<?php if ($currentAction == 'files') : ?>
+	<a href="<?php echo $this->url(array('action' => 'edit'), 'crud'); ?>"
+	   class="iconButton pencil">
+		<?php echo $this->translate('Back to edit'); ?>
+	</a>
+	<?php endif; ?>
+</div>
+
+<hr />

@@ -1,0 +1,51 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Error
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: error.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php
+    echo $this->stateError($this->translate('Error 404') . ' - ' . $this->message);
+?>
+
+<?php if (isset($this->exception)): ?>
+
+<h3>Exception information:</h3>
+<p>
+  <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+</p>
+
+<h3>Stack trace:</h3>
+<pre><?php echo $this->exception->getTraceAsString() ?>
+</pre>
+
+<h3>Request Parameters:</h3>
+<pre><?php echo var_export($this->request->getParams(), true) ?>
+</pre>
+<?php endif; ?>

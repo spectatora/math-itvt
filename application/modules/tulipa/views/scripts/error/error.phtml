@@ -1,0 +1,79 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage Error
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: error.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <?php if (isset($this->exception)): ?>
+    
+    <h1><?=$this->translate('Error occurred')?></h1>
+    
+    <br />
+    
+    <h2><?=$this->translate("An error occurred while trying to execute the script")?></h2>
+    
+    <br />
+    
+    <h3><?=$this->translate('Exception information:')?></h3>
+    <br />
+    <p>
+      <b><?=$this->translate('Message:')?></b> <?php echo $this->exception->getMessage() ?>
+    </p>
+    
+    <br />
+    
+    <h3><?=$this->translate('Stack trace:')?></h3>
+    
+    <div style="border: 1px dotted red;font-size:12px;font-family:Candara, Arial;overflow: auto"><pre><?=$this->exception->getTraceAsString()?></pre>
+    </div>
+    
+    <br />
+    
+    <h3><?=$this->translate('Request parameters:')?></h3>
+    
+    
+    <br />
+    
+    <pre><?=var_export($this->request->getParams(), true)?>
+    </pre>
+    
+    <?php else : ?>
+    <h1><?=$this->translate('Error 404')?></h1>
+    
+    <br />
+    
+    <h2><?=$this->translate("The page you are trying to load does not exist")?></h2>
+    <?php endif ?>
+</body>
+</html>

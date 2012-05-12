@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Глава 2. Инсталиране и конфигуриране на Tulipa</title><link rel="stylesheet" href="css/style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Tulipa - кратко ръководство" /><link rel="up" href="index.html" title="Tulipa - кратко ръководство" /><link rel="prev" href="ch01.html" title="Глава 1. Кратък увод" /><link rel="next" href="ch03.html" title="Глава 3. Tulipa CRUD модули" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Глава 2. Инсталиране и конфигуриране на Tulipa</th></tr><tr><td align="left"><a accesskey="p" href="ch01.html">Назад</a> </td><th width="60%" align="center"> </th><td align="right"> <a accesskey="n" href="ch03.html">Напред</a></td></tr></table><hr /></div><div class="chapter" title="Глава 2. Инсталиране и конфигуриране на Tulipa"><div class="titlepage"><div><div><h2 class="title"><a id="install-and-config"></a>Глава 2. Инсталиране и конфигуриране на Tulipa</h2></div></div></div><div class="sect2" title="Инсталация"><div class="titlepage"><div><div><h3 class="title"><a id="id1288240"></a>Инсталация</h3></div></div></div><p>
+        Следкато вече сте се сдобили с Tulipa, трябва да я разархивирате в директория на сървъра. Следващата важна стъпка е да направите следните директории(и техните поддиректории) <span class="bold"><strong>chmod 777</strong></span>:
+        </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+                cache
+                </p></li><li class="listitem"><p>
+                langs
+                </p></li><li class="listitem"><p>
+                temp
+                </p></li><li class="listitem"><p>
+                public_html
+                </p></li></ul></div><p>
+    </p></div><div class="sect2" title="Конфигурация"><div class="titlepage"><div><div><h3 class="title"><a id="id1288268"></a>Конфигурация</h3></div></div></div><div xmlns="" class="ui-widget"><div class="note ui-state-highlight ui-corner-all"><span class="ui-icon ui-icon-info"></span><p><strong>Забележка</strong><br /> 
+        За да работи Tulipa трябва да имате инсталиран и конфигуриран Zend Framework. 
+        Как става това може да прочетете <a xmlns="http://www.w3.org/1999/xhtml" class="ulink" href="http://bgscripts.com/2011/01/23/%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B2%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8-%D1%81%D1%8A%D1%81-zend-framework-%D1%83%D1%80%D0%BE%D0%BA-2/">тук</a></p></div></div><p>
+        Следкато сме готови с директориите, може да пристъпим към конфигурация на базата данни.
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>Създайте нова база данни(с помощта на phpMyAdmin)</p></li><li class="listitem"><p>Импортирайте файлът ./DB/db-bones.sql</p></li><li class="listitem"><p>Редактирайте MySQL настройките в application/configs/application.ini</p><p>
+                </p><pre class="programlisting">
+;database settings
+resources.db.adapter = "Pdo_Mysql"
+resources.db.params.host = "localhost"
+resources.db.params.username = "root"
+resources.db.params.password = ""
+resources.db.params.dbname = "tulipa"
+resources.db.params.charset = "utf8"
+</pre><p>
+            </p></li></ul></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td align="left"><a accesskey="p" href="ch01.html">Назад</a> </td><td align="center"> </td><td align="right"> <a accesskey="n" href="ch03.html">Напред</a></td></tr><tr><td align="left" valign="top">Глава 1. Кратък увод </td><td align="center"><a accesskey="h" href="index.html">Начало</a></td><td align="right" valign="top"> Глава 3. Tulipa CRUD модули</td></tr></table></div></body></html>

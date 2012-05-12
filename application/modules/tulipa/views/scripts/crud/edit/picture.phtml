@@ -1,0 +1,70 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage CRUD
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: picture.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+
+$crudModuleName = $this->placeholder('crudModuleName')->getValue();
+$picturesModel = $this->placeholder('picturesModel')->getValue();      
+$filenameColumn = $picturesModel->getFilenameColumn();   
+$uploadUrl = $picturesModel->getUrl();
+$thumbsFolder = $picturesModel->getThumbsFolder();
+
+$domElementId = $crudModuleName . '-picture-' . $this->id;
+
+?>
+
+<div class="ui-widget ui-state-highlight ui-corner-all"
+	 id="<?php echo $domElementId; ?>"
+	 style="margin: 5px; padding: 5px; float: left; height: 105px; width: 110px;">
+	<div style="height: 80px; overflow: hidden;">
+    	<img alt="<?php echo $this->escape($this->$filenameColumn); ?>" 
+    		 src="<?php echo $this->baseUrl($uploadUrl . '/' . $thumbsFolder . '/' . $this->$filenameColumn); ?>"
+    		 style="max-height: 80px; max-width: 100px;" />
+	</div>
+	<div style="margin-top: 5px;">
+    	<?php 
+    	$deleteUrl = $this->url(array(
+            'action' => 'delete-picture',
+            'id' => $this->id), 'crud'
+        );
+    	$jQueryOptions = array(
+                'url' => $deleteUrl,
+                'confirmMessage' => $this->translate('Are you sure you want to delete this picture?'),
+                'elementToHide' => $domElementId
+            );
+        ?>
+        <a class="iconButton trash small delete" 
+        href="<?php
+            echo $jQueryOptions['url'];
+        ?>"
+        onclick="recordRemover.remove(<?php 
+            echo $this->escape(Zend_Json::encode($jQueryOptions));
+        ?>);return false;"></a>
+	</div>
+</div>

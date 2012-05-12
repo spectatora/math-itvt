@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Глава 3. Tulipa CRUD модули</title><link rel="stylesheet" href="css/style.css" type="text/css" /><meta name="generator" content="DocBook XSL Stylesheets V1.75.2" /><link rel="home" href="index.html" title="Tulipa - кратко ръководство" /><link rel="up" href="index.html" title="Tulipa - кратко ръководство" /><link rel="prev" href="ch02.html" title="Глава 2. Инсталиране и конфигуриране на Tulipa" /><link rel="next" href="ch04.html" title="Глава 4. ACL система" /></head><body><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Глава 3. Tulipa CRUD модули</th></tr><tr><td align="left"><a accesskey="p" href="ch02.html">Назад</a> </td><th width="60%" align="center"> </th><td align="right"> <a accesskey="n" href="ch04.html">Напред</a></td></tr></table><hr /></div><div class="chapter" title="Глава 3. Tulipa CRUD модули"><div class="titlepage"><div><div><h2 class="title"><a id="crud-modules"></a>Глава 3. Tulipa CRUD модули</h2></div></div></div><div class="sect2" title="Що е то CRUD?"><div class="titlepage"><div><div><h3 class="title"><a id="id1288311"></a>Що е то CRUD?</h3></div></div></div><p>
+            <span class="bold"><strong>CRUD</strong></span> е абревиатура
+            от четирите фундаментални операции с данни - <span class="bold"><strong>Create, Read, Update и Delete</strong></span>.
+            В повечето системи, които пишем, ние използваме непрекъснато тези 4 метода. Например в даден сайт
+            имаме най-обикновена система за новини. Потребителите могат да четат новини от сайта, а администраторите 
+            могат да добавят, редактират или изтриват статии от админ модулът. Този абстрактен интерфейс се нарича 
+            <span class="bold"><strong>CRUD</strong></span>.
+        </p><p>
+			CRUD методите най-често се имплементират в моделите. Нека за нашата система за новини имаме модел наречен
+			Default_Model_News. Логично е той да имплементира 4-те CRUD метода - insert(), read(), update(), delete().
+			Можем да го използваме както в сайта, така и в админ модулът.
+		</p></div><div class="sect2" title="Но какво представляват Tulipa CRUD модулите?"><div class="titlepage"><div><div><h3 class="title"><a id="id1288344"></a>Но какво представляват Tulipa CRUD модулите?</h3></div></div></div><p>
+			Тъй като тези 4 операции се срещат в повечето подсистеми, става доста досадно писането на еднотипни 
+			модели, формуляри и контролери. За една подсистема трябва да имаме един отделен контролер, един формуляр,
+			изгледи(view scripts) и модел. Във всички случеи това бави доста работата. 
+			<span class="bold"><strong>Но какво да правим?</strong></span>
+        </p><p>
+			Решението на Tulipa е всичката тази работа да се замени с единствен *.ini файл, в който се описва 
+			подробно подсистемата - с каква таблица в базата данни работи, какви полета участват във формуляра,
+			критерии за търсене(филтриране) и т.н.  
+        </p><p>
+			Тези конфигурационни файлове се поставят в application/modules/tulipa/crud. 
+		</p><p>
+			Нека разгледаме един обикновен CRUD модул:
+			</p><pre class="programlisting">
+[production]
+enabled = true
+icon = "articles.png"
+
+descriptions.index = "От тук може да разгледате списък с публикуваните статии"
+descriptions.add = "От тук можете да добавите нова статия"
+descriptions.edit = "От тук можете да редактирате избраната статия"
+
+name.default = "Статии"
+
+db.table = "articles"
+db.primaryKeyColumn = "id"
+
+; Browse settings
+browse.fields[] = "id"
+browse.fields[] = "name"
+browse.buttons.edit = true
+browse.buttons.delete = true
+
+form.default.elements.name.type = "text";
+form.default.elements.name.options.label = "Име"
+form.default.elements.name.options.required = true
+form.default.elements.name.options.filters.stringTrim.filter = "StringTrim"
+form.default.elements.name.options.filters.stripTags.filter = "StripTags"
+
+form.default.elements.shortDescription.type = "textarea";
+form.default.elements.shortDescription.options.label = "Кратко описание"
+form.default.elements.shortDescription.options.required = true
+form.default.elements.shortDescription.options.filters.stringTrim.filter = "StringTrim"
+form.default.elements.shortDescription.options.filters.stripTags.filter = "StripTags"
+
+form.default.elements.content.type = "editor";
+form.default.elements.content.options.label = "Съдържание"
+form.default.elements.content.options.required = true
+
+[staging : production]
+
+[testing : production]
+
+[development : production]
+</pre><p>
+        </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td align="left"><a accesskey="p" href="ch02.html">Назад</a> </td><td align="center"> </td><td align="right"> <a accesskey="n" href="ch04.html">Напред</a></td></tr><tr><td align="left" valign="top">Глава 2. Инсталиране и конфигуриране на Tulipa </td><td align="center"><a accesskey="h" href="index.html">Начало</a></td><td align="right" valign="top"> Глава 4. ACL система</td></tr></table></div></body></html>

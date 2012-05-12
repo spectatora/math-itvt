@@ -1,0 +1,152 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage Acl
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php
+    /**
+     * Get Acl Rules.
+     */
+    $acl = $this->acl;
+    
+    echo $this->stateInfo($this->translate('From here you can view details of each access type (role) users online'));
+    
+    ?>
+    <table class="list">
+        <tr>
+            <td></td>
+            <td class="title"><?php
+                echo $this->translate('Module')
+            ?></td>
+            <td><?php
+                echo $this->translate('Role')
+            ?></td>
+            <td><?php
+                echo $this->translate('Section')
+            ?></td>
+            <td><?php
+                echo $this->translate('Subsection')
+            ?></td>
+            <td><?php
+                echo $this->translate('Access')
+            ?></td>
+            <td></td>
+        </tr>
+    <?php
+    foreach ($acl as $rule)
+    {
+        $id = $rule['id'];
+        $domElementId = 'rule' . $id;
+        
+        $resourceName = $rule['resourceName'];
+        $resourceArray = explode(Application_Model_Acl::HIERARCHY_SEPARATOR, $resourceName);
+        
+        /**
+         * Get module and controller names 
+         * from resource filed by exploding the string (`MODULENAME_CONTROLLERNAME`)
+         */        
+        $moduleName = empty($resourceArray[0]) ? $this->translate('For all') : ucfirst($resourceArray[0]);
+        $controllerName = empty($resourceArray[1]) ? $this->translate('For all') : $resourceArray[1];
+        $actionName = empty($rule['privilegeId']) ? $this->translate('For all') : $rule['privilegeName'];
+        $roleName = empty($rule['roleId']) ? $this->translate('For all') : $rule['roleName'];
+        $accessStatus = $rule['allow'] ? $this->translate('Allowed') : $this->translate('Forbiden');        
+        ?>
+        <tr id="<?php
+            echo $domElementId;
+        ?>">
+            <td></td>
+            <td><?php
+                echo $this->escape($moduleName);
+            ?></td>
+            <td><?php
+                echo $this->escape(ucfirst($roleName));
+            ?></td>
+            <td><?php
+                $pageLabel = $this->mixedNavigation->findOneByController($controllerName);
+                if (!empty($pageLabel)) {
+                    echo $this->escape($pageLabel->getLabel());
+                } else {
+                    echo $this->escape($controllerName);
+                }
+            ?></td>
+            <td><?php
+                $pageLabel = new Zend_Navigation($this->mixedNavigation
+                                                      ->findAllByController($controllerName));                
+                if (!empty($pageLabel)) {
+                    $actionLabel = $pageLabel->findOneByAction($actionName);
+                    if (!empty($actionLabel)) {
+                        echo $actionLabel->getLabel();
+                    } else {
+                        echo $this->escape($actionName);
+                    }
+                } else {
+                    echo $this->escape($actionName);
+                }                
+            ?></td>
+            <td><?php
+                echo $this->escape($accessStatus);
+            ?></td>
+            <td>
+                <?php
+                    $jQueryOptions = array(
+                        'url' => $this->url(array(
+                            'controller' => 'acl',
+                            'action' => 'delete',
+                            'id' => $id
+                        ), 'tulipa', true),
+                        'confirmMessage' => $this->translate('Are you sure you want to delete these access rights?'),
+                        'elementToHide' => $domElementId
+                    );
+                ?>
+                
+                <a class="iconButton trash small delete" 
+                   href="<?php
+                        echo $jQueryOptions['url'];
+                   ?>"
+                   onclick="recordRemover.remove(<?php 
+                        echo $this->escape(Zend_Json::encode($jQueryOptions));
+                   ?>);return false;"></a>
+            </td>
+        </tr>
+        <?php
+    
+        
+    }
+    ?>
+    </table>
+    <?php
+    
+    /**
+     * Zend_Paginator partial.
+     */
+    echo $this->paginationControl($this->paginator);
+    
+    echo $this->stateInfo($this->translate('Module named "default" means the basic site module, "tulipa" is the administrative module'));
+?>

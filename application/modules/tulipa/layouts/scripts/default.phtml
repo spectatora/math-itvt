@@ -1,0 +1,82 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_Layout
+ * @subpackage Scripts
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: default.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+<?=$this->doctype()?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+    <head>
+    
+        <?php 
+            echo $this->headMeta()
+                      ->appendHttpEquiv('Content-Language', Zend_Registry::get('Zend_Locale')->toString());
+            
+        ?>
+
+        <!-- CSS Includes -->
+        <?php $this->cssImport(); ?>
+        <?=$this->headLink(array('rel' => 'resources', 'href' => $this->baseUrl('resources/tulipa')))
+                ->headLink(array('href' => $this->url(array('controller' => 'langs', 'action' => 'js'), 
+                              'tulipa', true),
+                              'rel' => 'gettext'))?>
+        
+        
+        <!-- JavaScript includes -->    
+        <?=$this->jsImport()?>
+        
+        <?php
+            $activePage = $this->navigation()->findActive($this->mixedNavigation);
+            
+            echo $this->headTitle($this->translate('Administration'), 'PREPEND')
+                       ->headTitle($this->title, 'PREPEND')
+                       ->headTitle($activePage['page']);
+        ?>
+        
+        <script type="text/javascript">
+            var config = {
+                baseUrl : '<?php
+                    echo $this->baseUrl();
+                ?>'
+            }
+        </script>
+  
+    </head>
+    <body>
+        
+        <?php
+            /**
+             * Render the main page content.
+             */
+            echo $this->render('default/document.phtml');
+        ?>
+        
+    </body>
+    
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+                 
+<chapter id="crud-modules">
+	<title>Tulipa CRUD модули</title>
+	 
+    <sect2>
+        <title>Що е то CRUD?</title>
+        
+        <para>
+            <emphasis role="bold">CRUD</emphasis> е абревиатура
+            от четирите фундаментални операции с данни - <emphasis role="bold">Create, Read, Update и Delete</emphasis>.
+            В повечето системи, които пишем, ние използваме непрекъснато тези 4 метода. Например в даден сайт
+            имаме най-обикновена система за новини. Потребителите могат да четат новини от сайта, а администраторите 
+            могат да добавят, редактират или изтриват статии от админ модулът. Този абстрактен интерфейс се нарича 
+            <emphasis role="bold">CRUD</emphasis>.
+        </para>
+        
+        <para>
+			CRUD методите най-често се имплементират в моделите. Нека за нашата система за новини имаме модел наречен
+			Default_Model_News. Логично е той да имплементира 4-те CRUD метода - insert(), read(), update(), delete().
+			Можем да го използваме както в сайта, така и в админ модулът.
+		</para>
+        
+    </sect2>
+    
+    <sect2>
+        <title>Но какво представляват Tulipa CRUD модулите?</title>
+        
+        <para>
+			Тъй като тези 4 операции се срещат в повечето подсистеми, става доста досадно писането на еднотипни 
+			модели, формуляри и контролери. За една подсистема трябва да имаме един отделен контролер, един формуляр,
+			изгледи(view scripts) и модел. Във всички случеи това бави доста работата. 
+			<emphasis role="bold">Но какво да правим?</emphasis>
+        </para>
+        
+        <para>
+			Решението на Tulipa е всичката тази работа да се замени с единствен *.ini файл, в който се описва 
+			подробно подсистемата - с каква таблица в базата данни работи, какви полета участват във формуляра,
+			критерии за търсене(филтриране) и т.н.  
+        </para>
+        
+        <para>
+			Тези конфигурационни файлове се поставят в application/modules/tulipa/crud. 
+		</para>
+		
+		<para>
+			Нека разгледаме един обикновен CRUD модул:
+			<programlisting><![CDATA[
+[production]
+enabled = true
+icon = "articles.png"
+
+descriptions.index = "От тук може да разгледате списък с публикуваните статии"
+descriptions.add = "От тук можете да добавите нова статия"
+descriptions.edit = "От тук можете да редактирате избраната статия"
+
+name.default = "Статии"
+
+db.table = "articles"
+db.primaryKeyColumn = "id"
+
+; Browse settings
+browse.fields[] = "id"
+browse.fields[] = "name"
+browse.buttons.edit = true
+browse.buttons.delete = true
+
+form.default.elements.name.type = "text";
+form.default.elements.name.options.label = "Име"
+form.default.elements.name.options.required = true
+form.default.elements.name.options.filters.stringTrim.filter = "StringTrim"
+form.default.elements.name.options.filters.stripTags.filter = "StripTags"
+
+form.default.elements.shortDescription.type = "textarea";
+form.default.elements.shortDescription.options.label = "Кратко описание"
+form.default.elements.shortDescription.options.required = true
+form.default.elements.shortDescription.options.filters.stringTrim.filter = "StringTrim"
+form.default.elements.shortDescription.options.filters.stripTags.filter = "StripTags"
+
+form.default.elements.content.type = "editor";
+form.default.elements.content.options.label = "Съдържание"
+form.default.elements.content.options.required = true
+
+[staging : production]
+
+[testing : production]
+
+[development : production]
+]]></programlisting>
+        </para>
+        
+	</sect2>
+	
+</chapter>

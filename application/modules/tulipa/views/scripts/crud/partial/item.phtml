@@ -1,0 +1,96 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage CRUD
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: item.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+
+$fields = $this->placeholder('fields')->getValue();
+$buttons = $this->placeholder('buttons')->getValue();
+$crudModuleName = $this->placeholder('crudModuleName')->getValue();
+
+$domElementId = $crudModuleName . '-row-' . $this->id;
+
+?>
+<tr id="<?php echo $domElementId; ?>">
+	<td></td>
+<?php
+foreach ($fields as $field) :
+?>
+	<td><?php echo $this->escape($this->$field); ?></td>
+<?php
+endforeach;
+
+if (!is_array($buttons)) {
+    $buttons = $buttons->toArray();
+}
+
+if (isset($buttons['delete']) || isset($buttons['edit'])) : ?>
+	<td>
+    <?php         
+        if (isset($buttons['edit']) && $buttons['edit']) :
+        
+        $editUrl = $this->url(array(
+            'action' => 'edit',
+            'id' => $this->id), 'crud'
+        );
+        
+    ?>
+    <a class="iconButton pencil small" 
+       href="<?=$editUrl?>"></a>
+    <?php
+        endif;
+        if (isset($buttons['delete']) && $buttons['delete']) :
+    ?>
+    <?php
+    
+        $deleteUrl = $this->url(array(
+            'action' => 'delete',
+            'id' => $this->id), 'crud'
+        );
+    
+        $jQueryOptions = array(
+            'url' => $deleteUrl,
+            'confirmMessage' => $this->translate('Are you sure you want to delete this entry?'),
+            'elementToHide' => $domElementId
+        );
+    ?>
+        <a class="iconButton trash small delete" 
+        href="<?php
+            echo $jQueryOptions['url'];
+        ?>"
+        onclick="recordRemover.remove(<?php 
+            echo $this->escape(Zend_Json::encode($jQueryOptions));
+        ?>);return false;"></a>
+    <?php
+        endif;
+    ?>
+	</td>
+<?php 
+endif;
+?>
+</tr>

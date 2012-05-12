@@ -1,0 +1,84 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Articles
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php 
+if (empty($this->page)) {
+    return;
+}
+
+?>
+<!-- Facebook comments script -->
+<script type="text/javascript">
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="common left">
+    
+    <h2><?php echo $this->escape($this->page['title']); ?></h2>
+    
+    <?php 
+    echo $this->partial('articles/partial/top-articles.phtml', array(
+        'topArticles' => $this->topArticles
+    )); 
+    ?>
+       
+    <div class="articles">
+		
+		<?php 
+        if (!empty($this->articles)) {
+            foreach ($this->articles as $article) 
+            {
+                echo $this->article($article);
+            }
+            echo $this->paginationControl($this->paginator, null, null, $this->params);
+        } else {
+            echo $this->stateInfo('Няма открити статии');
+        }
+        ?>
+        
+    </div> <!-- end of .articles -->
+    
+</div> <!-- end of .left -->
+
+<div class="common right">
+	
+	<?php echo $this->fbLikeBox(true); ?>
+	<br /><br />
+    <?php echo $this->mostPopularArticles(15, 'Популярни от ' . $this->page['title'], $this->page['children']); ?>
+    
+</div> <!-- end of .right -->

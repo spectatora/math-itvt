@@ -1,0 +1,119 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_Layout
+ * @subpackage Scripts
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: default.phtml 121 2011-05-29 22:21:03Z sasquatch@bgscripts.com $
+ */
+
+/** Get SEO data **/
+
+if (!isset($this->seoKeywords)) {
+    $seoKeywords = (string) Default_Model_Settings::readFieldByName('content', Default_Model_Settings::SETTING_SEO_KEYWORDS);
+    $seoKeywords = str_replace(',', ', ', $seoKeywords);
+} else {
+    $seoKeywords = $this->seoKeywords;
+}
+
+if (!isset($this->seoDescription)) {
+    $seoDescription = (string) Default_Model_Settings::readFieldByName('content', Default_Model_Settings::SETTING_SEO_DESCRIPTION);
+} else {
+    $seoDescription = $this->seoDescription;
+}
+
+if (!isset($this->seoTitle)) {
+    $seoTitle = Zend_Registry::get('COMMON_SETTINGS')->title;
+} else {
+    $seoTitle = $this->seoTitle;
+}
+
+?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "DTD/xhtml1-strict.dtd">
+<html xmlns:fb="https://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo Zend_Registry::get('Zend_Locale')->toString(); ?>" lang="<?php echo Zend_Registry::get('Zend_Locale')->toString(); ?>" dir="ltr">
+    <head>
+        
+        <?php
+            echo $this->headMeta()
+                      ->appendHttpEquiv('Content-Language', Zend_Registry::get('Zend_Locale')->toString())
+                      ->appendName('keywords', $seoKeywords)
+                      ->appendName('description', $seoDescription);
+        ?>
+                
+        <title><?php echo $this->escape($seoTitle); ?></title>
+        
+        <!-- CSS Includes -->
+        <?php echo $this->cssImport(); ?>
+        
+        
+        <!-- JavaScript Includes -->
+        <?php echo $this->jsImport(); ?>
+        
+        <?php 
+        $metaProperties = $this->placeholder('META_PROPERTY')->getValue();
+        
+        if (!empty($metaProperties)) {
+            foreach ($metaProperties as $property) :
+            if (empty($property['content']) || empty($property['property'])) {
+                continue;
+            }
+        ?>
+        
+	<meta content="<?php echo $property['content'] ?>" property="<?php echo $property['property'] ?>" />
+        <?php
+            endforeach;
+        }        
+        ?>
+        
+        <script type="text/javascript">        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-26147506-1']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();        
+        </script>
+        
+    </head>
+    
+    <body>
+        
+
+        
+        <?php
+            /**
+             * Render main document div.
+             */
+            echo $this->render('default/document.phtml');
+
+        ?>
+        
+    </body>
+</html>

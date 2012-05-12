@@ -1,0 +1,98 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Paginator
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: custom.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php
+
+/**
+ * Fix the params.
+ */
+if (empty($this->params)) {
+    $this->params = array();
+    $resetRoute = false;
+} else {
+    $resetRoute = true;
+}
+
+if ($this->pageCount > 1): ?>
+
+<ul id="icons" class="ui-widget ui-helper-clearfix paginator">
+
+<?php if (isset($this->previous)): ?>
+    
+    <li title="<?php
+        echo $this->translate('Back');
+    ?>" class="ui-state-default ui-corner-all">
+    
+        <a href="<?php echo $this->url(array_merge(array('page' => $this->previous), $this->params), 'default', $resetRoute); ?>">
+            <span class="ui-icon ui-icon-seek-prev"></span>
+        </a>
+    
+    </li>
+<?php endif; ?>
+
+<?php foreach ($this->pagesInRange as $page): ?>
+
+  <?php if ($page != $this->current): ?>
+    
+    <li class="ui-state-default ui-corner-all">
+        <a href="<?php echo $this->url(array_merge(array('page' => $page), $this->params), 'default', $resetRoute); ?>">
+            <span class="userListStraniciN"><?php echo $page; ?></span>
+        </a>    
+    </li>
+
+  <?php else: ?>
+
+    <li class="ui-state-default ui-corner-all">
+        <span class="userListStraniciN"><?php echo $page; ?></span>
+    </li>
+
+  <?php endif; ?>
+
+<?php endforeach; ?>
+
+<?php if (isset($this->next)): ?>
+
+    <li title="<?php
+        echo $this->translate('Next');
+    ?>" class="ui-state-default ui-corner-all">
+    
+        <a href="<?php echo $this->url(array_merge(array('page' => $this->next), $this->params), 'default', $resetRoute); ?>">
+            <span class="ui-icon ui-icon-seek-next"></span>
+        </a>
+    
+    </li>
+
+<?php endif; ?>
+
+</ul>
+
+<?php endif; ?>

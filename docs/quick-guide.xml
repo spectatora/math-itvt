@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<book lang="bg"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <bookinfo>
+        <title>Tulipa - кратко ръководство</title>
+        <subtitle>Наръчник на разработчика</subtitle>
+    </bookinfo>
+
+    <!-- Include chapters -->
+    <xi:include href="chapters/intro.xml" />
+    <xi:include href="chapters/install.and.config.xml" />
+    <xi:include href="chapters/crud.modules.xml" />
+    <xi:include href="chapters/acl.xml" /> 
+    <xi:include href="chapters/l10n.and.i18n.xml" />
+    <xi:include href="chapters/rewrite.routes.xml" />
+ 
+</book>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <production>
+        <items path="resources/default/css/">
+            <item value="document.css" />
+            <item value="jquery.lightbox-0.5.css" />
+	    <item value="jquery-ui-1.8.8.custom.css" />
+        </items>
+    </production>
+    
+    <!-- Other enviorments -->    
+    <testing extends="production" />
+    <staging extends="production" />
+    <development extends="production" />
+    
+</configdata>

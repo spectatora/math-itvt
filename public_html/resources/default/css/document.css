@@ -1,0 +1,122 @@
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ */
+
+/** Clear dotted border from links **/
+a { outline: none; }
+
+a img { border: none; }
+
+/** Background color **/
+body { background-color: #E6E6E6; font: 80% "Trebuchet MS", sans-serif; padding: 0; margin: 0; }
+
+/** Header **/
+.interface-header { height: 180px; background: #292929 url(../images/interface/header/textures.png) center bottom no-repeat; margin: 0; }
+.interface-header-site-name { overflow: hidden; }
+
+.interface-header-top { height: 30px; width: 850px; margin: 0 auto; overflow: hidden; }
+
+/** Header buttons **/
+.interface-header-button { text-decoration: none; color: #FFF; display: block; float: right; height: 18px; border: none; margin: 0 3px !important; padding: 5px 4px 0 3px !important; cursor: pointer; background: url(../images/interface/header/buttons/background.png) repeat-x !important; border: none !important }
+.interface-header-button:hover { background-image: url(../images/interface/header/buttons/hover/background.png) !important; }
+
+    .interface-header-button .ui-icon { float: left; margin-top: -3px; }
+    .interface-header-button .interface-header-button-text { float: left; font-size: 12px; margin-top: -3px; }
+
+.interface-header-middle { width: 850px; margin: 0 auto; overflow: hidden; }
+.interface-header-middle-logo { width: 87px; height: 21px; margin: 0 auto; overflow: hidden; float: left; background: url(../images/interface/header/logo.png) no-repeat; }
+.interface-header-middle-slogan { color: #DFDFDF; font-family: Arial, Verdana, sans-serif; font-size: 17px; font-style: italic; font-weight: normal; }
+
+/** Content **/
+.interface-body { width: 850px; overflow: hidden; margin: -84px auto 30px; background: url(../images/interface/body/border/background.png); }
+
+.interface-body-top { overflow: hidden; text-align: center;  height: 80px; border: 1px solid #4D4D4D; border-bottom: none; padding-top: 10px; }
+
+/** Main menu **/
+.interface-menu { float: left; width: auto; margin: 10px auto 20px; display: inline-block; overflow: hidden; background: #FFF; padding: 1px; border: 1px solid #CCC; }
+.interface-menu li { display: block; float: left; background: url(../images/interface/menu/sep.png) left top; }
+.interface-menu li.prev-fix { background: top url(../images/interface/menu/active/prev-sep.png) repeat-x; }
+.interface-menu li.active { background: top url(../images/interface/menu/active/sep.png) repeat-x; }
+.interface-menu li:last-child { background: none; }
+.interface-menu li:last-child a { margin-right: 0; }
+.interface-menu li a { margin-right: 2px; display: block; font-family: Verdana, Arial, sans-serif; font-size: 1.2em; color: #FFF; text-decoration: none; height: 26px; list-style-type: none; padding: 10px 7px 0 7px; background: top url(../images/interface/menu/background.png) repeat-x }
+.interface-menu li a:hover { text-decoration: underline; }
+.interface-menu li.active a { background: url(../images/interface/menu/active/background.png) top repeat-x }
+
+.interface-body-middle { overflow: hidden; border: 1px solid #EAEAEA; border-top: none; border-bottom: none; margin-top: -20px; }
+
+.interface-body-content-all { background: #FFF; overflow: hidden; margin: 0 auto; width: 810px; padding: 0 10px; }
+
+.interface-body-bottom { overflow: hidden; text-align: center;  height: 80px;padding-top: 10px; margin-top: -10px; }
+
+.interface-footer { background: #E6E6E6 url(../images/interface/footer/background.png); height: 90px; overflow: hidden; margin-top: -30px; margin-bottom: 10px; text-align: center }
+.interface-footer .ad img { border: none; margin: 0 5px; }
+
+.interface-footer-border { width: 848px; overflow: hidden; margin: 0 auto; background: url(../images/interface/body/border/background.png);  border: 1px solid #EAEAEA; border-top: none; padding-bottom: 10px; }
+
+.interface-footer-copyright { text-align: center; font-family: Arial, Verdana, sans-serif; font-size: 12px; color: #3E3E3E; }
+.interface-footer-copyright a { color: #3E3E3E }
+.interface-footer-copyright a:hover { text-decoration: none }
+
+.interface-body-left { float: left; width: 150px; margin-right: 10px; }
+.interface-body-right { float: left; width: 650px; }
+
+.interface-body-bar { margin-bottom: 10px; }
+.interface-body-bar a:hover { color: #93E1FF; text-decoration: none; }
+.interface-body-bar .ui-widget-header { height: 30px; font-weight: normal !important; cursor: pointer; }
+.interface-body-bar .ui-widget-header .ui-icon { margin-top: 5px; margin-left: 5px; float: left; }
+.interface-body-bar-title { margin-top: 6px; margin-left: 5px; float: left; }
+.interface-body-bar .ui-widget-content { border-top: none; padding: 5px; margin: 0; }
+.interface-body-bar-menu li { margin-left: 15px; margin-bottom: 5px; }
+
+.interface-body-right div.ui-widget-content { background: #E6E6E6; border: 1px solid #D8D8D8 }
+.interface-body-list-table { border-collapse: collapse; display: block; width: 100%; }
+.interface-body-list-table thead { width: 100%; }
+.interface-body-list-table tbody { background: #FEF1A9 !important; }
+.interface-body-list-table td { padding: 3px; border-right: 1px dotted #A5A5A5; font-size: 11px; cursor: default; }
+.interface-body-list-table thead td { border-color: #26B3F7; font-weight: bold; }
+thead.ui-state-default td { border-color: #A5A5A5 !important; }
+.interface-body-list-table tbody td { border-bottom: 1px dotted #A5A5A5; }
+
+.interface-pagination { text-align: center; }
+.ui-buttonset .ui-button { height: 24px; overflow: hidden; margin-right: -3px !important; z-index: 1; }
+.ui-widget-overlay { z-index: 100; }
+
+.left-login-form input { margin-left: -.1em; margin-top: 3px; margin-bottom: 3px; width: 138px; }
+
+.zend_form, .zend_form dl { overflow: hidden; }
+.zend_form dd { margin-left: 0; }
+.zend_form legend { height: auto !important; padding: 4px !important; }
+.zend_form fieldset { background: #FFFBE6 !important; }
+.zend_form dt { float: left; clear: both; min-width: 350px; padding: 5px; }
+.zend_form dd { padding: 5px; }
+.zend_form input[type=text], .zend_form input[type=password] { width: 240px; height: 15px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; border: 1px solid #FFDE2E; font-size: 12px; padding: 5px; }
+
+.interface-forms-dd { width: 100%; margin: 0 auto !important; }
+
+.ui-spinner { position: relative; display: block; }
+.ui-spinner-buttons { position: static !important; float: left; }
+.ui-spinner-button { overflow: hidden; }
+#class { width: 40px; float: left; margin-right: -5px !important; padding-right: 11px; }
+
+.ui-buttonset .ui-button { vertical-align: middle; }

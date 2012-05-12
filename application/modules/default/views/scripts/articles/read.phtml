@@ -1,0 +1,169 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Articles
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php 
+if (empty($this->article)) {
+    return;
+}
+
+$this->placeholder('META_PROPERTY')->set(null);
+if (!empty($this->article->metaTitle)) {
+    $this->placeholder('META_PROPERTY')->prepend(array(
+        'property' => 'og:site_name',
+        'content' => $this->article->metaTitle
+    ));
+}
+
+if (!empty($this->article->picture)) {
+    $this->placeholder('META_PROPERTY')->prepend(array(
+        'property' => 'og:image',
+        'content' => 'http://' . $_SERVER['HTTP_HOST']
+                               . $this->baseUrl('/uploads/thumbs/' 
+                               . $this->article->picture)
+    ));
+}
+?>
+
+<div class="common left">
+    
+    <div class="breadcrumbs">
+   	<?php 
+   	echo $this->navigation($this->mainNav()->getContainer())
+   	          ->breadcrumbs()
+   	          ->setMinDepth(0)
+   	          ->setSeparator(' » ')
+   	          ->setLinkLast(true);
+   	?>
+   	 » 
+   		<span class="current"><?php echo $this->escape($this->article->title); ?></span>
+    </div>
+    
+    <h1><?php echo $this->escape($this->article->title); ?></h1>
+    
+    <span class="short-description"><?php echo $this->article->intro; ?></span>
+    
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_compact"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e7f219b14812ea5"></script>
+    <!-- AddThis Button END -->
+
+    <div class="common article-content">
+        
+        <?php if (!empty($this->article->picture)) : ?>
+        <img src="<?php echo $this->baseUrl('uploads/' . $this->article->picture); ?>" alt="<?php echo $this->escape($this->article->title); ?>" class="article-picture" />
+        <?php endif; ?>
+        
+        <?php echo $this->article->content; ?>
+        
+    </div> <!-- end of .article-content -->
+    
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#appId=113194475455204&xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+    <fb:like href="http://<?php echo $_SERVER['HTTP_HOST'] . $this->url(array()); ?>" send="false" width="450" show_faces="true" font="tahoma"></fb:like>
+    
+    <hr />
+    
+    <?php if (!empty($this->article->tags) && $this->article->tags->count()) : ?>
+    <div class="tags">
+    Тагове: 
+        <?php 
+            $tags = array();
+            foreach ($this->article->tags as $keyword) : 
+                $tags[] = $this->anchor($keyword->tag, null, $this->url(array(
+                    'tag' => $keyword->tag
+                ), 'tag', true));
+            endforeach;
+            echo implode(', ', $tags);
+        ?>
+    </div>
+    <?php endif; ?>
+    
+    <br />
+    
+    <?php if (!empty($this->article->pictures) && $this->article->pictures->count()) : ?>
+    <span class="title">Снимки</span>
+    <div class="common article-gallery">
+        <p>
+        	<?php foreach ($this->article->pictures as $picture) : ?>
+            <a href="<?php echo $this->baseUrl('uploads/' . $picture->filename); ?>">
+            	<img src="<?php echo $this->baseUrl('uploads/thumbs/' . $picture->filename); ?>" alt="test-pic" />
+        	</a>
+            <?php endforeach; ?>
+        </p>
+    </div> <!-- end of .article-gallery -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	$('.article-gallery a').lightBox({fixedNavigation:true});
+    });
+    </script>
+    <?php endif; ?>
+    
+    <br />
+    
+    <script type="text/javascript">
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+    
+    <span class="title">Коментари (<fb:comments-count href="http://<?php echo $_SERVER['HTTP_HOST'] . $this->url(array()); ?>">0</fb:comments-count>)</span>
+    
+    <fb:comments href="http://<?php echo $_SERVER['HTTP_HOST'] . $this->url(array()); ?>" 
+				 num_posts="10" width="680"></fb:comments>
+</div> <!-- end of .left -->
+
+<div class="common right">
+
+	<?php echo $this->fbLikeBox(true); ?>
+    <br /><br />
+	<?php echo $this->similar($this->article->tags, $this->article->id); ?>
+	
+    <?php echo $this->mostPopularArticles(15, 'Популярни от ' . $this->article->pageTitle, $this->pageIDs); ?>
+
+</div> <!-- end of .right -->

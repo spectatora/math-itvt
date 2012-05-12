@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<configdata>
+    <production>
+        <items path="/resources/tulipa/js/" 
+               pack="1">
+            <item value="libs/jquery-1.4.2.min.js" />
+            <item value="libs/jquery-ui-1.8.2.custom.min.js" />
+            <item value="libs/functions.js" />
+            <item value="libs/plugins/jquery.form.js" />
+            <item value="libs/plugins/jquery.cues.js" />
+            <item value="libs/plugins/jquery.gettext.js" />
+            <item value="libs/plugins/jquery.json-2.2.min.js" />
+            <item value="libs/plugins/jquery.textboxList.js" />
+            <item value="libs/plugins/growingInput.js" />
+            <item value="libs/plugins/ui.spinner.min.js" />
+            <item value="interface/document.js" />
+            <item value="interface/controller/main.js" />
+            <item value="interface/recordRemover.js" />
+        </items>
+        <items path="/">
+            <item value="ckeditor/ckeditor.js" />
+            <item value="ckeditor/adapters/jquery.js" />
+            <item value="ckfinder/ckfinder.js" />
+        </items>
+    </production>
+    
+    <!-- Other enviorments -->    
+    <testing extends="production" />
+    <staging extends="production" />
+    <development extends="production" />
+    
+</configdata>

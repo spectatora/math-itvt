@@ -1,0 +1,3 @@
+.ui-spinner {position: relative; display: block; }
+.ui-spinner-buttons {position: absolute; left: 68px !important;}
+.ui-spinner-button {overflow: hidden}

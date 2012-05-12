@@ -1,0 +1,67 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Articles
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<div class="common left">
+    
+    <?php if (!empty($this->keyword)) : ?>
+    <h2>Търсене за "<?php echo $this->escape($this->keyword) ?>"</h2>
+    <?php else: ?>
+    <h2>Търсене</h2>
+    <?php endif; ?>
+    
+    <div class="articles">
+		
+		<?php 
+        if (!empty($this->articles)) {            
+            $paginator = $this->paginationControl($this->paginator, null, null, $this->params);
+            echo $paginator . '<br /><hr />';
+            foreach ($this->articles as $article) 
+            {
+                echo $this->article($article);
+            }
+            echo '<hr />' . $paginator;
+        } else {
+            echo $this->stateInfo('Няма открити статии');
+        }
+        ?>
+        
+    </div> <!-- end of .articles -->
+    
+</div> <!-- end of .left -->
+
+<div class="common right">
+
+	<?php echo $this->fbLikeBox(true); ?>
+	<br /><br />
+    <?php echo $this->mostPopularArticles(15); ?>
+    
+</div> <!-- end of .right -->

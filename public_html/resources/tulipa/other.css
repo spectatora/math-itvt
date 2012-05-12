@@ -1,0 +1,76 @@
+/**
+ * Common record boxes.
+ */
+.recordBox 
+{
+    font-size:  12px;
+    padding:    6px;
+    margin:     5px 0
+}
+    .recordBox .languageTitle
+    {
+        padding:    0 4px;
+        min-width:  100px;
+        border:     none
+    }
+
+/**
+ * Buttons
+ */
+.iconButton.small
+{
+    float:  left; 
+    width:  16px; 
+    height: 16px;
+    margin: 0 2px;
+}
+
+.ui-state-highlight .ui-button .ui-icon { background-image: url("ui/images/ui-icons_cccccc_256x240.png") }
+
+.sourceCode 
+{
+    max-height:             400px;
+    overflow:               auto;
+    background:             url("ui/images/ui-bg_highlight-soft_80_eeeeee_1x100.png") repeat-x scroll 50% top #EEEEEE;
+    border:                 1px solid #CCCCCC;
+    -moz-border-radius:     4px;
+    -webkit-border-radius:  4px;
+}
+
+hr { height: 1px; border: none; border-bottom: 1px #FFF solid; border-top: 1px #999 solid; margin: 4px auto; }
+.users-city-name { font-size: 11px; }
+
+.crud-module-navigation a { font-size: 1em !important; }
+
+.crud-module-icon
+{
+	width:         160px; 
+	max-height:    185px; 
+	float:         left;
+	margin:        20px 9px 10px;
+    border:        1px solid #CCCCCC;
+/*    background:     #555555;*/
+	background:    url("ui/images/ui-bg_highlight-soft_80_eeeeee_1x100.png") repeat-x scroll 50% top #EEEEEE
+
+}
+
+.crud-module-icon a.icon { height: 128px; text-align: center; margin: 10px; display: block }
+.crud-module-icon a.title 
+{ 
+	width:			   150px;	
+	display:           block; 
+	font-size:         12px;
+	font-weight:       normal; 
+	padding:           7px 5px;
+	text-decoration:   none;
+    margin-left:       -1px;
+}
+.crud-module-icon a.title:hover 
+{ 
+/*    text-decoration: underline; */
+    background-image: url("ui/images/ui-bg_inset-soft_30_f58400_1x100.png");
+    border: 1px solid #FFAF0F;
+}
+
+a.link { color: #FFF; }
+a.link:hover { text-decoration: none; }

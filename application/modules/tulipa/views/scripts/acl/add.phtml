@@ -1,0 +1,86 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage Acl
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: add.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+
+<script type="text/javascript">
+    var controllers = <?php
+        echo Zend_Json::encode($this->controllers)
+    ?>;
+    
+    var actions = <?php
+        echo Zend_Json::encode($this->actions)
+    ?>;
+    
+    function changeSelectValues(select, options) {
+        var option = $('<option/>');
+            option.attr('value', null)
+                  .html('<?php echo $this->translate('For all'); ?>');            
+        select.html(option);
+        if (options != null) {
+            $.each(options, function(key, value) {
+                option = $('<option/>');
+                option.attr('value', value)
+                          .html(value);
+                select.append(option);
+            });
+        }
+    }
+    
+    $(document).ready(function() {
+        $('#module').change(function() {
+            var value = $(this).attr('value');
+            if (value != null) {
+               var options = controllers[value];
+            } else {
+               var options = null;
+            }
+            changeSelectValues($('#resource'), options);
+            changeSelectValues($('#privilege'), null);
+        });
+        
+        $('#resource').change(function() {
+            var value = $(this).attr('value');
+            if (value != null) {
+                var options = actions[$('#module').attr('value')][value];
+            } else {
+                var options = null;
+            }
+            changeSelectValues($('#privilege'), options);
+        });
+    })
+</script>
+
+<?php
+    /**
+     * Display form.
+     */
+    echo $this->form;
+?>

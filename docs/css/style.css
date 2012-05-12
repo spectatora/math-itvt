@@ -1,0 +1,43 @@
+@import url('sunny/jquery-ui-1.8.16.custom.css');
+
+body { font-family: Tahoma,Arial,non-serif; }
+p { font-size: 12.5px; }
+
+a[href]
+{
+	color: #C9AE70; 
+	text-decoration: none; 
+	border-bottom: 1px #E7D4A7 dashed; 
+}
+
+a[href]:hover { border-bottom: none; }
+
+.toc dl dt { margin-bottom: 5px; }
+
+hr { border: none; border-top: 1px #BCC7A6 dashed; background: none; }
+
+.title { color: #AE261F }
+.subtitle { color: #AB1E17 }
+
+.toc p a { color: #AE261F }
+
+.navfooter table tr:last-child { font-style: italic; font-size: 12px; }
+.navfooter table tr:last-child a[href] { font-style: normal; font-size: 12px !important; }
+
+.navheader { font-size: 13px; color: #293A4F; font-weight: normal !important; }
+
+.programlisting 
+{
+	font-family: 'Courier New';
+	font-size: 12px;
+	border: 1px dotted black;
+	padding: 5px;
+	background: #F8F1D7;
+}
+
+.note { margin-top: 20px; padding: .7em; }
+.note .ui-icon { float: left; margin-right: .3em; }
+.note br { margin-bottom: 5px; }
+.note p { margin: 0; font-size: 12px; padding-top: 1px; font-style: italic; }
+.note p strong { font-style: normal; }
+.note a[href] { border-bottom-color: #000 }

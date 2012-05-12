@@ -1,0 +1,63 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Articles
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: partial.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php 
+
+if (empty($this->articles)) {
+    return;
+}
+
+if (!$this->articles->count()) {
+    return;
+}
+
+?>
+
+<div class="common bar">
+        <div class="title"><?php echo $this->escape($this->title); ?></div>
+        <div class="common content">
+            <ul>
+            	<?php 
+            	foreach ($this->articles as $article) : 
+            	    if (empty($article->url) || empty($article->shortDate)) {
+            	        $url = $this->url(array('id' => $article->id), 'article-id', true);
+            	    } else {
+            	        $url = $this->url(array('url' => $article->url, 'date' => $article->shortDate), 'article-url', true);
+            	    }
+            	?>
+                <li><a href="<?php echo $url; ?>"><?php echo $this->escape($article->title) ?></a></li>
+                <?php 
+                endforeach; 
+                ?>
+            </ul>
+        </div>
+    </div> <!-- end of .bar -->

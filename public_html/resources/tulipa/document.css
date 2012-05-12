@@ -1,0 +1,429 @@
+/** Clean some white space **/
+*{
+	padding:	0;
+	margin:		0;
+}
+
+/** Clear dotted border from links **/
+a 
+{
+   outline: none;
+}
+
+/** Body settings **/
+body 
+{	
+    background: #363636; 
+    width:      100%;
+}
+
+html {
+    background: #363636;
+}
+
+/**
+ * jQUery UI CSS fixes
+ */
+.ui-widget { font-size:.7em; }
+.ui-dialog .ui-dialog-buttonpane button { padding: .1em }
+
+/**
+ * Loading animation.
+ */
+p.loading { text-align: center }
+
+/** Main DOM element, that contains almost everything **/
+div.document
+{
+	overflow:	hidden;
+}
+    /** Header **/
+    /** [1] **/
+    div.document div.header
+    {
+        width:      100%;    
+        background: #242424;
+        height:     80px;
+    }
+        div.header div.content
+        {
+            width:      1100px;
+            height:     80px;
+            margin:     0 auto;
+            overflow:   hidden;
+        }
+            div.header div.logo
+            {
+                display:        block; 
+                float:          left;
+                text-align:     center;
+                vertical-align: middle;
+                padding-left:   10px;
+            }
+                div.logo img
+                {
+                    vertical-align: middle;
+                    margin:         10px 10px 0 10px;
+                    position:       relative;
+                    z-index:        1;
+                    border:         none;
+                }
+                
+                div.logo p
+                {
+                    margin-top:         -15px;
+                    font-size:          17px;
+                    font-weight:        bold;
+                    font-family:        Verdana;
+                    color:              #FFF;
+                    padding:            4px;
+                    text-shadow:        0px 0px 5px #000, 0px 0px 5px #FFF, 0px 0px 5px #FFF;
+                    position:           relative;
+                    z-index:            2;
+                }
+                
+            div.header p.title
+            {
+                font-size:      19px;
+                font-family:    Arial;
+                color:          #FFF;
+                font-weight:    bold;
+                vertical-align: middle;
+                text-shadow:    2px 2px 0px #5F5F5F;
+                display:        block;
+                margin-top:     25px;
+                margin-left:    5px;
+                float:          left;
+            }
+            div.header div.bar
+            {
+                float:                              right;
+                height:                             30px;
+                background:                         url(images/header-bar-background.png) bottom;
+                border:                             1px #626262 solid;
+                margin:                             0 10px;
+                padding:                            2px 7px 2px 2px;
+                -moz-box-shadow:                    0px 0px 2px #FFF, 0px 0px 8px #FFF;
+            }
+            
+                div.header div.bar img { vertical-align: middle; margin: 2px 0 0 5px; }
+                
+                div.header div.bar a
+                {
+                    font-family:        Arial;
+                    font-size:          12px;
+                    text-decoration:    underline;
+                    color:              #FFF;
+                    margin:             0 10px 0 4px;
+                    vertical-align:     middle;
+                }
+                div.header div.bar a:hover { text-decoration: none; }
+                
+                /**
+                 * Language select menu.
+                 */
+                div.header div.bar a.languageIcon
+                {
+                    padding:        3px;
+                    margin-right:   0px;
+                    margin-top:     2px;
+                    border:         1px transparent solid;
+                    cursor:         pointer;
+                    display:        block;
+                    float:          left;
+                }
+                
+                    div.header div.bar a.languageIcon img
+                    {
+                        margin: 0;
+                    }
+                
+    /** [/1] **/
+    
+    /** Main content **/
+    /** [2] **/
+    div.document div.main
+    {
+        width:      100%;
+        background: #F1F1EF url(images/main.png) bottom repeat-x;
+    }
+        div.main div.content
+        {
+            width:          1000px;
+            margin:         10px auto;
+            overflow:       hidden;
+            padding:        10px 0 60px;
+        }
+        
+        /** Left container **/
+        div.main div.left
+        {
+            width:          160px;
+            float:          left;
+            margin-right:   14px;
+        }
+        
+        /** Middle conrainer **/
+        div.main div.center
+        {
+            width:          auto;
+            float:          left;
+            margin-right:   14px;
+        }
+        
+        div.main div.center.login
+        {
+            width:          300px;
+            float:          none;
+            margin:         0 auto;
+        }
+        
+        /** Right container **/
+        div.main div.right
+        {
+            width:          160px;
+            float:          left;
+        }
+        
+        /** Navigation bar **/
+        div.main div.navigation
+        {
+            width:      100%;
+            overflow:   hidden;
+            margin:     10px 0;
+            height:     25px;
+        }
+            
+            div.navigation img { vertical-align: middle; }
+            div.navigation a img { margin: 0; border: none }
+        
+            div.navigation a
+            {
+                font-family:        Arial;
+                font-size:          12px;
+                text-decoration:    none;
+                color:              #000;
+                margin:             3px;
+            }
+            
+            div.main div.navigation a:hover { color: #BA2626 }
+            div.main div.navigation a:last-child { text-decoration: underline; }            
+            div.main div.navigation a:first-child { margin: 0; }
+        
+        /** Bars **/
+        /** [2.1] **/
+        div.main div.bar
+        {
+            width:          160px;
+            margin-bottom:  17px;
+            margin-top:     5px;
+        }
+            /** Bar title **/
+            /** [2.1.1] **/
+            div.main div.bar div.top
+            {
+                display:                         block;
+                width:                           100%;
+                background:                      url(images/main-bar-top.png);
+                height:                          33px;
+                border:                          1px #C9C9BE solid;
+                overflow:                        hidden;
+            }
+            div.main div.bar div.top.inactive { background: url("images/main-bar-content.png") repeat-x scroll center bottom #F1F1EF }
+            
+                div.main div.bar div.top img { vertical-align: middle; margin: 4px 0 0 5px; float: left; }
+            
+                div.main div.bar div.top a
+                {
+                    font-family:        Verdana;
+                    font-size:          11px;
+                    text-decoration:    none;
+                    color:              #000;
+                    margin:             0 3px;
+                    vertical-align:     middle;
+                    padding-top:        10px;
+                    display:            block;
+                    float:              left;
+                }
+                
+                div.main div.center.login div.bar div.top a { cursor: default }
+                
+                div.main div.bar div.top span.sep
+                {
+                    width:          1px;
+                    height:         33px;
+                    background:     #C7C7C0;
+                    border-right:   1px #FAFAF9 solid;
+                    display:        block;
+                    float:          right;
+                }
+                
+                div.main div.bar div.top span.arrow
+                {
+                    width:          26px;
+                    height:         33px;
+                    background:     no-repeat center center;
+                    display:        block;
+                    float:          right;
+                    cursor:         pointer;
+                }
+                
+                div.main div.bar div.top span.arrow.down { background-image: url(images/arrow-down.png) }
+                div.main div.bar div.top span.arrow.right { background-image: url(images/arrow-right.png) }
+                
+                div.main div.bar div.content
+                {
+                    width:          100%;
+                    height:         auto;
+                    padding:        0;
+                    margin:         0;
+                    border:         1px #C9C9BE solid;
+                    border-top:     none;
+                }
+                
+                div.main div.center div.bar div.content
+                {
+                    width:          780px;
+                    padding:        5px 15px;
+                    background:     #F1F1EF url(images/main-bar-content.png) bottom repeat-x;
+                    border:         1px #BEBEB6 solid;
+                    border-top:     none;
+                    font-size:      12px;
+                    color:          #000;
+                    font-family:    Arial;
+                    min-height:     40px;
+                }
+                
+                div.main div.center.login div.bar div.content { width: 270px }
+                    
+                    div.content p.loading
+                    {
+                        text-align:     center;
+                        top:            40%;
+                        position:       relative
+                    }
+                                
+            
+            /** [/2.1.1] **/
+            
+            /** Bar items **/
+            /** [2.1.2] **/
+            div.main div.bar ul.navigation
+            {
+                display:            block;
+                width:              100%;
+                margin:             0;
+                padding:            0;
+                list-style-type:    none;
+            }
+               ul.navigation li
+               {
+                    display:        block;
+                    width:          100%;
+                    background:     url(images/main-bar-item.png) repeat-x;
+                    overflow:       hidden;
+               }
+               ul.navigation li:last-child, ul.navigation li:last-child ul
+               { 
+                    -moz-border-radius-bottomleft:      6px;
+                    -webkit-border-bottom-left-radius:  6px;
+                    -moz-border-radius-bottomright:     6px;
+                    -webkit-border-bottom-right-radius: 6px;
+                    border-radius-bottom:               6px;
+               }
+                    ul.navigation li a
+                    {
+                        color:              #000;
+                        font-size:          12px;
+                        font-family:        Arial;
+                        text-decoration:    none;
+                        padding-top:        5px;
+                        padding-left:       20px;
+                        width:              100%;
+                        height:             22px;
+                        display:            block;
+                        background:         url(images/main-bar-item-bullet.png) 5px 9px no-repeat;
+                    }
+                    ul.navigation li a:hover, ul.navigation li a.focus { background-image: url(images/main-bar-item-bullet-hover.png) }
+                    
+                    ul.navigation li a.hidden { display: none }
+                    
+                        ul.navigation li ul { background: #363636 }
+                        
+                            ul.navigation li ul li { padding-left: 5px; background: none }
+                    
+                        ul.navigation li ul li a { background-image: url(images/main-bar-item-bullet-sub.png); color: #FFF }
+                        ul.navigation li ul li a:hover, ul.navigation li ul li a.focus { background-image: url(images/main-bar-item-bullet-sub-hover.png) }
+            
+            /** [/2.1.2] **/
+            
+        /** Bar for the middle container **/
+        div.main div.center div.bar
+        {
+            width:          810px;
+        }
+        
+        div.main div.center.login div.bar { width: 300px; }
+        /** [/2.1] **/
+        
+        
+    /** [/2] **/
+    
+    /** Footer **/
+    /** [3] **/
+    div.document div.footer
+    {
+        width:      100%;    
+        background: url(images/footer.png);
+        height:     80px;
+    }
+        div.footer div.content
+        {
+            width:      950px;
+            height:     80px;
+            margin:     0 auto;
+        }
+            div.footer p
+            {
+                font-size:      11px;
+                font-family:    Verdana;
+                color:          #FFF;
+                padding-top:    16px;
+                text-align:     center;
+            }
+            
+                div.footer p a{
+                    font-size:          11px;
+                    font-family:        Verdana;
+                    color:              #FFF;
+                    text-decoration:    underline;
+                }
+                div.footer p a:hover { text-decoration: none }
+    
+    /** [/3] **/
+
+    /** Messages **/
+    /** [4] **/
+    .ui-state
+    {
+        margin:     5px auto; 
+        padding:    5px;
+    	overflow:	hidden;
+    }
+        .ui-state p:first-child span
+        {
+            float:        left; 
+            margin-right: .3em;
+        }
+    /** [/4] **/    
+
+/** Constant style classes **/
+ul.navigation a.hidden { display: none }
+.overflowHidden { overflow: hidden }
+.floatRight { float: right }
+.floatLeft { float: left }
+
+#content .modal
+{
+    position: absolute;
+}

@@ -1,0 +1,159 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage SEO
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+<style type="text/css">
+table, td, th
+{
+border:1px solid black;
+}
+
+</style>
+<?php
+
+	/** Display message **/
+ //   	echo $this->message . "<br />";
+
+//	echo "happy people";
+?>
+
+<p style="text-align: center;">ПЕТИ МАТЕМАТИЧЕСКИ ТУРНИР НА ВЕЛИКОТЪРНОВСКИЯ УНИВЕРСИТЕТ за ученици от XI и XII клас, 06.03.2011г.</p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1 style="text-align: center;"><?php echo "КЛАСИРАНЕ ВТОРО НИВО"; ?></h1>
+<br /><br /><br /><br /><br /><br />
+<table style="width:100%;">
+  <tr>
+    <th>Рег н</th>
+    <th>Място</th>
+<th>Участник</th>
+<th>Град</th>
+<th>Учиище</th>
+<th>Клас</th>
+<th>Равнище</th>
+<th>Точки</th>
+  </tr>
+<?php
+foreach ($this->appearedEntries as $row) {
+			echo "<tr>\n<td>". $row->id . "</td>\n<td>" . $row->school .  "</td>\n<td>". $row->names . "</td>\n<td>" . $row->city . "</td>\n<td>" . $row->level . "</td>\n<td>" . $row->room . "</td>\n<td></td>\n<td></td>\n</tr>\n";
+}
+?>
+  <tr>
+    <td>2</td>
+    <td>ПМГ</td>
+    <td>Име Презиме Фамилия</td>
+    <td>Велико Търново</td>
+    <td>1</td>
+     <td>506</td>
+ <td></td>
+ <td></td>
+  </tr>
+  
+
+  <tr>
+    <td>2</td>
+    <td>ПМГ</td>
+    <td>Име Презиме Фамилия</td>
+    <td>Велико Търново</td>
+    <td>1</td>
+     <td>506</td>
+ <td></td>
+ <td></td>
+  </tr>
+
+
+  <tr>
+    <td>2</td>
+    <td>ПМГ</td>
+    <td>Име Презиме Фамилия</td>
+    <td>Велико Търново</td>
+    <td>1</td>
+     <td>506</td>
+ <td></td>
+ <td></td>
+  </tr>
+</table>
+
+<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="position: relative; margin-left: 0px; margin-right:0px;">
+<table style="border: none; margin-left: auto; margin-right: auto;">
+<tr>
+<th style="border: none;"></th>
+<th>Получени допълнително листи:&nbsp;&nbsp;</th>
+<th>Върнати&nbsp;&nbsp;</th>
+<th style="border: none;"></th>
+</tr>
+<tr>
+	<td style="border: none;">Белова</td>
+	<td></td>
+	<td></td>
+	<td style="border: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Явили се:</td>
+</tr>
+<tr>
+	<td style="border: none;">Червнова</td>
+	<td></td>
+	<td></td>
+	<td style="border: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Неявили се:</td>
+</tr>
+<tr>
+	<td style="border: none;">&nbsp;</td>
+	<td style="border: none;"></td>
+	<td style="border: none;"></td>
+	<td style="border: none;"></td>
+</tr>
+<tr>
+	<td style="border: none;">Квестори:</td>
+	<td style="border: none;">1</td>
+	<td style="border: none;"></td>
+	<td style="border: none;"></td>
+</tr>
+<tr>
+	<td style="border: none;"></td>
+	<td style="border: none;">2</td>
+	<td style="border: none;"></td>
+	<td style="border: none;"></td>
+</tr>
+</table>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<div style="positin: relative; margin-left: 0px; margin-right: 0px;">
+<p style="margin-left: auto; margin-right: auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;За председател на Организационния комитет: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /доц. д-р Д. Гълъбова/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Одобрявам: Декан &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /доц. д-р Ж. Карапенчев/</p>
+</div>

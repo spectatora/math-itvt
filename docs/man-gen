@@ -1,0 +1,7 @@
+#!/bin/sh
+xsltproc --stringparam chunker.output.encoding UTF-8 \
+         --stringparam chunker.output.doctype-public \
+               "-//W3C//DTD XHTML 1.0 Transitional//EN" \
+         --xinclude \
+         xsl/chunk.xsl \
+         quick-guide.xml

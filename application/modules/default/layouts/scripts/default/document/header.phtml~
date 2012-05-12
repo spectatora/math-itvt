@@ -1,0 +1,56 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_Layout
+ * @subpackage Scripts
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: footer.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+    <div class="interface-header">
+        <div class="interface-header-top">
+            
+            
+        </div>
+        
+        <div class="interface-header-middle">
+            
+            <div class="interface-header-site-name">
+                <div class="interface-header-middle-logo"></div> <br />
+                <h2 class="interface-header-middle-slogan">МАТЕМАТИЧЕСКИ ТУРНИР НА ВЕЛИКОТЪРНОВСКИЯ УНИВЕРСИТЕТ- Велико Търново 2012</h2>
+            </div>
+            
+        </div>
+        
+    </div>
+
+ <div class="interface-body ui-corner-all">
+    
+        <div class="interface-body-top ui-corner-top">
+            <div class="interface-body-content-all ui-corner-top">
+                
+            </div>
+        </div>

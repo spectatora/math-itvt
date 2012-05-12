@@ -1,0 +1,87 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Tulipa
+ * @package    Tulipa_View
+ * @subpackage SEO
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: index.phtml 185 2011-09-22 14:49:32Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php
+
+	/** Display message **/
+    	echo $this->message . "<br />";
+	
+
+	/** Schools **/
+	echo "Участници от " . $this->differentSchoolsNumber . " различни училища<br />";
+
+
+
+	if (!empty($this->uniqueSchools)) {
+	    	echo "<hr />";
+		foreach ($this->uniqueSchools as $row) {
+ 
+    		// output 'Zend_Db_Table_Row' or similar
+		echo $row->school . " - " . $row->city . "<br />";
+		}
+		echo "<hr />";
+	}
+
+
+	/** Cities **/
+	echo "Участници от " . $this->differentCitiesNumber . " различни населени места<br />";
+
+
+
+	if (!empty($this->uniqueCities)) {
+	    	echo "<hr />";
+		foreach ($this->uniqueCities as $row) {
+			echo $row->city . "<br />";
+		}
+		echo "<hr />";
+	}
+
+	/** Approved **/
+	echo "Одобрени участници " .$this->approvedEntriesNumber. "<br />";
+	if (!empty($this->approvedEntries)) {
+	    	echo "<hr />";
+		foreach ($this->approvedEntries as $row) {
+			echo $row->names . " - " . $row->city .  " - ". $row->school . "<br />";
+		}
+		echo "<hr />";
+	}
+
+	/** Appearance **/
+	echo "Явили се участници " .$this->appearedEntriesNumber. "<br />";
+	if (!empty($this->appearedEntries)) {
+	    	echo "<hr />";
+		foreach ($this->appearedEntries as $row) {
+			echo $row->names . " - " . $row->city .  " - ". $row->school . "<br />";
+		}
+		echo "<hr />";
+	}
+?>

@@ -1,0 +1,86 @@
+<?php
+/**
+ * Tulipa © Core 
+ * Copyright © 2010 Sasquatch <Joan-Alexander Grigorov>
+ *                      http://bgscripts.com
+ * 
+ * LICENSE
+ * 
+ * A copy of this license is bundled with this package in the file LICENSE.txt.
+ * 
+ * Copyright © Tulipa
+ * 
+ * Platform that uses this site is protected by copyright. 
+ * It is provided solely for the use of this site and all its copying, 
+ * processing or use of parts thereof is prohibited and pursued by law.
+ * 
+ * All rights reserved. Contact: office@bgscripts.com
+ * 
+ * Платформата, която използва този сайт е със запазени авторски права. 
+ * Тя е предоставена само за ползване от конкретния сайт и всяко нейно копиране, 
+ * преработка или използване на части от нея е забранено и се преследва от закона. 
+ * 
+ * Всички права запазени. За контакти: office@bgscripts.com
+ *
+ * @category   Default
+ * @package    Default_View
+ * @subpackage Articles
+ * @copyright  Copyright (c) 2010 Sasquatch MC
+ * @version    $Id: partial.phtml 103 2011-04-18 13:41:08Z sasquatch@bgscripts.com $
+ */
+?>
+
+<?php 
+// Configure date
+$date = new Zend_Date($this->date, 'bg_BG');
+// Set pictures folder. Use big picture if article is used on the top
+$picturesFolder = $this->main ? 'uploads/' : 'uploads/thumbs/';
+?>
+
+<div class="common <?php if ($this->main) echo 'last-'; ?>article">
+    <?php 
+    // Configure link
+    if (empty($this->url) || empty($this->shortDate)) {
+        $url = $this->url(array('id' => $this->id), 'article-id', true);
+    } else {
+        $url = $this->url(array('url' => $this->url, 'date' => $this->shortDate), 'article-url', true);
+    }
+    ?>
+	<?php if (!empty($this->picture)) : ?>
+	<a href="<?php echo $url; ?>">
+        <img src="<?php echo $this->baseUrl($picturesFolder . $this->picture); ?>" 
+        	 alt="<?php echo $this->escape($this->title); ?>"
+             class="preview-photo" />
+	</a>
+    <?php endif; ?>
+    <div class="description" style="float: none;">
+        <h3>
+        	<a class="title" href="<?php echo $url; ?>">
+        	    <?php echo $this->escape($this->title); ?>
+    	    </a>
+        	<?php 
+            if (isset($this->pageTitle) && !$this->main && !$this->compact) :
+                if (empty($this->pageUrl)) {
+                    $url = $this->url(array('id' => $this->pageId), 'page-id', true);
+                } else {
+                    $url = $this->url(array('url' => $this->pageUrl), 'page-url', true);
+                }
+            ?>
+            <span class="page">» <a href="<?php echo $url; ?>"><?php echo $this->escape($this->pageTitle); ?></a></span>
+            <?php 
+            endif; 
+            ?>
+        </h3>
+        
+        <span>
+            <em><?php echo $date->toString(Zend_Date::DATE_LONG . ' ' . Zend_Date::TIME_MEDIUM); ?></em>
+            <div class="comments-count">
+                <img src="<?php echo $this->baseUrl('resources/default/images/icons/16x16/comments.png') ?>" />
+                <div><fb:comments-count href="http://<?php echo $_SERVER['HTTP_HOST'] . $url; ?>">0</fb:comments-count></div>
+            </div>
+        </span>
+        <?php if (!$this->compact) : ?>
+        <span><?php echo strip_tags($this->intro); ?></span>
+        <?php endif; ?>
+    </div>
+</div>

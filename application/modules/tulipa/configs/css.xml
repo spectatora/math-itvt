@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<configdata>
+    <production>
+        <items path="/resources/tulipa/">
+            <item value="ui/jquery-ui-1.8.2.custom.css" />
+            <item value="ui/ui.spinner.css" />
+            <item value="document.css" />
+            <item value="forms.css" />
+            <item value="tables.css" />
+            <item value="other.css" />
+            <item value="jquery.textboxList.css" />
+        </items>
+    </production>
+    
+    <!-- Other enviorments -->    
+    <testing extends="production" />
+    <staging extends="production" />
+    <development extends="production" />
+    
+</configdata>
